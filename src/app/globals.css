@@ -1,107 +1,116 @@
-:root {
-  --max-width: 1100px;
-  --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
-
-  --tile-start-rgb: 239, 245, 249;
-  --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(
-    #00000080,
-    #00000040,
-    #00000030,
-    #00000020,
-    #00000010,
-    #00000010,
-    #00000080
-  );
-
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-
-    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
-    );
-
-    --tile-start-rgb: 2, 13, 46;
-    --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(
-      #ffffff80,
-      #ffffff40,
-      #ffffff30,
-      #ffffff20,
-      #ffffff10,
-      #ffffff10,
-      #ffffff80
-    );
-
-    --callout-rgb: 20, 20, 20;
-    --callout-border-rgb: 108, 108, 108;
-    --card-rgb: 100, 100, 100;
-    --card-border-rgb: 200, 200, 200;
-  }
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-html,
+/* Assuming the base of your CSS is correctly setting the font 'Gilroy' and other resets */
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  background-image: url('./loginBackground.svg'), url('./loginBackground.svg'); /* Two background images */
+  background-size: 700px auto, 200px 200px; /* First image fixed size, second image 200x200 pixels */
+  background-repeat: no-repeat, no-repeat; /* Prevent repeating */
+  background-position: right 50%, left bottom; /* First image right 50%, second image bottom left */
+  padding-right: 641px; /* Add space to the right equal to the width of the card */
+  background-color: #f5f5dc; /* Set general background color to cream */
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* This will be your main container */
+.login-container {
+  display: flex;
+  justify-content: flex-start; /* Align content to the left */
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  position: relative; /* For child's absolute positioning */
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* This is your card container */
+.rectangle-1379 {
+  position: absolute;
+  width: 641px;
+  height: 835px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
+  left: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 20px;
+  z-index: 1;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(3px);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* Aligning the logo */
+.your-logo {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #F25019;
+  margin-bottom: 20px;
+  text-align: center; /* Center text */
+  width: auto; /* Adjust width based on text */
+}
+
+/* Aligning the login title */
+.login-title {
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 46px;
+  color: #2A1E17;
+  margin-bottom: 40px;
+  text-align: center; /* Center text */
+  width: auto; /* Adjust width based on text */
+}
+
+/* Aligning the form fields */
+.fields {
+  display: flex;
+  flex-direction: column;
+  width: 400px; /* Form width */
+  align-self: center; /* Self-center */
+  /* Other styles unchanged */
+}
+
+/* Email input field */
+.rectangle-1381 {
+  background: rgba(255, 255, 255, 0.5); /* Transparent white background */
+  border-radius: 5px;
+  border: none;
+  height: 50px;
+  margin-bottom: 20px; /* Adjust margin if needed */
+  backdrop-filter: blur(5px); /* Slight blur effect */
+}
+
+/* Password input field */
+.rectangle-1382 {
+  background: rgba(255, 255, 255, 0.5); /* Transparent white background */
+  border-radius: 5px;
+  border: none;
+  height: 50px;
+  margin-bottom: 20px; /* Adjust margin if needed */
+  backdrop-filter: blur(5px); /* Slight blur effect */
+}
+
+/* Sign in button */
+.rectangle-1383 {
+  background: #F25019;
+  border-radius: 5px;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  height: 50px;
+  border: none;
+}
+
+/* No need for the social buttons or other elements */
+
+/* Transparent background image */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 50%; /* Take up 50% of the space on the right */
+  background-image: url('./loginBackground.svg'); /* Transparent background image */
+  opacity: 0.5; /* Transparency level */
+  z-index: -1; /* Ensure it's below other content */
 }
