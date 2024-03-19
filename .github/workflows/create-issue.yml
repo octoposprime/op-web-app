@@ -1,15 +1,18 @@
-name: Create Issue
-
+name: Label issues
 on:
-  pull_request:
-    types: [opened]
-
+  issues:
+    types:
+      - reopened
+      - opened
 jobs:
-  create-issue:
+  label_issues:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
-    - uses: actions/checkout@v2
-    - name: Create Issue
-      run: |
-        echo "Creating new issue..."
-        cat ISSUE_TEMPLATE.md | sed -e "s/{{title}}/$GITHUB_EVENT_TITLE/" | sed -e "s/{{body}}/$GITHUB_EVENT_BODY/" | github-issue create
+      - run: gh issue edit "$NUMBER" --add-label "$LABELS"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          LABELS: change
