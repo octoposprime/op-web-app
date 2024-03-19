@@ -10,7 +10,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - run: gh issue edit "$NUMBER" --add-project 
+      - run: gh issue edit "$NUMBER" --add-project "$PROJECT"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
