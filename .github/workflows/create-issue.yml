@@ -1,8 +1,7 @@
-name: Label issues
+name: Assign Project and Member
 on:
   issues:
     types:
-      - reopened
       - opened
 jobs:
   label_issues:
@@ -10,7 +9,8 @@ jobs:
     permissions:
       issues: write
     steps:
-      - run: gh issue edit "$NUMBER" --add-project "$PROJECT" --add-label "$LABELS"
+      - run: |
+          gh issue edit "$NUMBER" --add-project "$PROJECT" --add-label "$LABELS"
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           LABELS: ${{ secrets.REPO_TEAM }}
